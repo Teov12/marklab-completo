@@ -25,12 +25,16 @@ async function descAllPro(){
         nombre.appendChild(document.createTextNode(producto.title));
     
         let descripcion = document.createElement('descripcion');
-        descripcion.appendChild(document.createTextNode(producto.price));
+        descripcion.appendChild(document.createTextNode(producto.description));
+
+        let price = document.createElement('p');
+        price.appendChild(document.createTextNode(producto.price));  
     
         let div = document.createElement('div');
         div.appendChild(imagen);
         div.appendChild(nombre);
         div.appendChild(descripcion);
+        div.appendChild(price);
         div.className = 'product';
     
         document.getElementById('product-list').appendChild(div);
