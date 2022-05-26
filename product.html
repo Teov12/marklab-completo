@@ -3,29 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <title>Notebook Dell 12345</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <script src="javascript/script.js" defer></script>
+    <script src="https://unpkg.com/vue@3.0.11/dist/vue.global.js"></script>
 </head>
 <body>
-    <div id="header">
-        <label>Ingrese su búsqueda: <input type="text"></label>
-        <button>Buscar</button>
-    </div>
-    <div id="product-info">
-        <div>
-            <img id="product-image" alt="Imagen de notebook" src="">
+    <div id="app">
+        <div class="cart">Cart {{ cart }}</div>
+        <div id="header">
+            <label>Ingrese su búsqueda: <input type="text"></label>
+            <button>Buscar</button>
         </div>
-        <div>
-            <h1 id="title"></h1>
-            <p id="product-description">Descripción de esta computadora. Descripción de esta computadora.
-                Descripción de esta computadora. Descripción de esta computadora. Descripción de esta computadora.
-                Descripción de esta computadora. Descripción de esta computadora. Descripción de esta computadora. </p>
-            <a id="fabri" href= "">Sitio fabricante</a>
-            <p id="price">$ 48.099</p>
+        <div id="product-info">
+            <div> 
+                <img class="product-image1" @mouseover="UpdateImage(urlimage)" v-for="urlimage in Urlimages" :src="urlimage" >
+                {{urlimage}}
+            </div>
+            <div>
+                <img id="product-image" alt="Imagen de notebook" v-bind:src="imagen">
+            </div>
+            <div>
+                <h1 id="title">{{nombre}}</h1>
+                <p id="product-description">{{descripcion}}</p>
+                <a id="fabri" v-bind:href= "factory">Sitio fabricante</a>
+                <p>{{ precio }}</p>
+            </div>
         </div>
-    </div>
-    <div id="footer">
-        <p>Marketplace tecnicatura</p>
-    </div>
+        <button class="button" v-on:click="AddToCart">Comprar</button>
+        <div id="footer">
+            <p>Marketplace tecnicatura</p>
+        </div>
+    <script src="./javascript/script.js"></script>
+    <script>
+        const mountedApp = app.mount('#app')
+    </script>
 </body>
 </html> 

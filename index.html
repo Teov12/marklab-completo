@@ -3,22 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <title>Marketplace Tecnicatura</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <script src="javascript/index_script.js" defer></script>
+    <script src="https://unpkg.com/vue@3.0.11/dist/vue.global.js"></script>
 </head>
 <body>
-<div class="container">
-    <div id="header">
-        <label>Ingrese su búsqueda: <input type="text"></label>
-        <button>Buscar</button><br><br>
-        <div id="cant-of-prod">Cant Productos: </div>
-    </div>
-    <div id="product-list">
-        
-    </div>
-    <div id="footer">
-        <p>Marketplace tecnicatura</p>
-    </div>
-</div>
+  <div id="app" class="container">
+    <div class="cart">Cart {{ cart }}</div>
+    <div class="container">
+        <div id="header">
+            <label>Ingrese su búsqueda: <input type="text"></label>
+            <button>Buscar</button><br><br>
+            <div id="cant-of-prod">Cant Productos: </div>
+        </div>
+            <div id="product-list">
+              <div v-for="producto in productos" class="product">
+                <p>{{producto.title}}</p>
+                <p class="product-description">{{producto.description}}</p>
+                <img :src="producto.image_url" class="product-image">
+                <a v-bind:href="producto.factory_url">Sitio de fabricante</a>
+                <p>{{producto.price}}</p>
+              </div>
+            </div>
+            <button class="button" v-on:click="AddToCart">Comprar</button>
+            <div id="footer">
+              <p>Marketplace tecnicatura</p>
+            </div>
+      </div>
+  </div>   
+<script src="./javascript/index_script.js"></script>
+<script>
+    const mountedApp = app.mount('#app')
+</script>
 </body>
 </html> 
